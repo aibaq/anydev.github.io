@@ -1,1 +1,129 @@
-Hello world
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ context_data.site.title }}</title>
+    <link rel="shortcut icon" href="{% static 'img/fav.png' %}" type="image/png">
+    <meta name="description" content="{{ context_data.site.description }}">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/landing.css' %}?v=578">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+    
+    <header>
+        <div class="container">
+          <a href="" class="logo title">
+            <img src="{{ context_data.images.logo }}" alt="Site Logo">
+          </a>
+          <ul class="nav">
+            <li><a href="#About"> {{ context_data.header.nav.nav1 }}</a></li>
+            <li><a href="#Projects"> {{ context_data.header.nav.nav2 }} </a></li>
+            <!-- <li><a href="#Team"> {{ context_data.header.nav.nav3 }} </a></li> -->
+          </ul>
+        </div>
+    </header>
+
+    <main id="About">
+        <div class="container">
+            <div class="main-left">
+            <h1 class="title"> 
+              {{ context_data.main.title }} <br>
+              <span class="anim"></span>
+            </h1>   
+            <p>
+                {{ context_data.main.text | safe }}
+            </p>
+            <a href="#Projects">
+              {{ context_data.main.link_text | safe }}
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.70531 0.705315C8.31578 0.31578 7.68422 0.31578 7.29468 0.705316C6.9054 1.0946 6.90511 1.72568 7.29405 2.11531L12.17 7H0.999999C0.447714 7 0 7.44772 0 8C0 8.55229 0.447715 9 1 9H12.17L7.29405 13.8847C6.90511 14.2743 6.9054 14.9054 7.29468 15.2947C7.68422 15.6842 8.31578 15.6842 8.70532 15.2947L15.1795 8.82051C15.6326 8.36736 15.6326 7.63264 15.1795 7.17949L8.70531 0.705315Z" fill="#0057FF"/>
+              </svg>
+            </a>
+        </div>
+        <div class="main-right">
+          <img class="anim-1" src="{% static 'img/main-img.png' %}" alt="">    
+        </div>
+        <div class="circle"></div>
+        </div>
+    </main>
+
+  <section class="projects" id="Projects">
+    <div class="container">
+      <h1 class="sec-title title">{{ context_data.projects.title }}</h1>
+      <h2 class="sub-title title">{{ context_data.projects.sub_title }}</h2>
+
+      <div class="projects">
+
+        {% for item in context_data.projects.last %}
+            <div class="project-b">
+              <div class="project-l">
+                <div class="project-title">
+                  <img src="{{ item.logo }}" alt=""> 
+                  <b>{{ item.year }}</b>
+                </div>
+                <h3>{{ item.title }}</h3>
+                <p>
+                  {{ item.text }}
+                </p>
+                <a href="{{ item.link }}" target="_blank">{{ context_data.buttons.go_to }}</a>
+              </div>
+              <div class="project-r">
+                <img src="{{ item.screen }}" alt="">
+              </div>
+            </div> 
+        {% endfor %}
+      </div>
+
+      <h2 class="sub-title title">{{ context_data.projects.sub_title2 }}</h2>
+
+
+      <div class="min-proj">
+        {% for item in context_data.projects.all_projects %}
+          <div class="min-b">
+            <div class="min-logo">
+              <img src="{{ item.logo }}" alt="">
+            </div>
+            <p>
+              {{ item.text }}
+            </p>
+            <a href="{{ item.link }}" target="_blank">{{ context_data.buttons.go_to }}</a>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+  <footer>
+    <div class="container">
+      <div class="cprtgh">{{ context_data.footer.cprght }}</div>
+
+      <div class="contacts">
+        <a href="mailto:{{ context_data.footer.email }}">{{ context_data.footer.email }}</a>
+        <a href="tel:{{ context_data.footer.phone }}">{{ context_data.footer.phone }}</a>
+      </div>
+    </div>
+  </footer>
+  
+  <script>
+    const MainWords = [
+      "аналитику", "разработку", "adsf"
+    ];
+  </script>
+  <script src="landing.js"></script>
+
+  <script>
+    new TypeIt(".anim", {
+      speed: 100,
+      strings: MainWords,
+      loop: true,
+      nextStringDelay: 3000,
+      loopDelay: 3000,
+      // cursor:false,
+      breakLines: false
+    }).go();
+
+  </script>
+</body>
+</html>
