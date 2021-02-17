@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>AnyDev - разработка IT-решений</title>
-    <link rel="shortcut icon" href="{% static 'img/fav.png' %}" type="image/png">
+    <link rel="shortcut icon" href="img/fav.png" type="image/png">
     <meta name="description" content="software development company">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="landing.css">
@@ -15,7 +15,7 @@
     <header>
         <div class="container">
           <a href="" class="logo title">
-            <img src="{{ context_data.images.logo }}" alt="Site Logo">
+            <img src="img/tr-logo.svg" alt="Site Logo">
           </a>
           <ul class="nav">
             <li><a href="#About"> {{ context_data.header.nav.nav1 }}</a></li>
@@ -28,11 +28,11 @@
         <div class="container">
             <div class="main-left">
             <h1 class="title"> 
-              {{ context_data.main.title }} <br>
+              О нас <br>
               <span class="anim"></span>
             </h1>   
             <p>
-                {{ context_data.main.text | safe }}
+                Мы делаем
             </p>
             <a href="#Projects">
               {{ context_data.main.link_text | safe }}
