@@ -59,7 +59,7 @@
           <div class="project-l">
             <div class="project-title">
               <img src="/img/p1.svg" alt=""> 
-              <b>{{ item.year }}</b>
+              <b>2020</b>
             </div>
             <h3>Tulpar Card</h3>
             <p>
@@ -78,17 +78,15 @@
 
 
       <div class="min-proj">
-        {% for item in context_data.projects.all_projects %}
           <div class="min-b">
             <div class="min-logo">
-              <img src="{{ item.logo }}" alt="">
+              <img src="/img/m1.svg" alt="">
             </div>
             <p>
-              {{ item.text }}
+                Система электронного документооборота, успешно работающая в нашей стране с 2016 года. При работе в данной компании ребята из нашей команды получили колоссальный опыт в документообороте и работе с ЭЦП.
             </p>
-            <a href="{{ item.link }}" target="_blank">{{ context_data.buttons.go_to }}</a>
+            <a href="https://idocs.kz" target="_blank">Перейти на сайт</a>
           </div>
-        {% endfor %}
       </div>
 
     </div>
@@ -106,7 +104,7 @@
   
   <script>
     const MainWords = [
-      "аналитику", "разработку", "adsf"
+      "аналитику", "разработку", "дизайн"
     ];
   </script>
   <script src="landing.js"></script>
